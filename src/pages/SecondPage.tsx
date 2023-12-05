@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import FirstComponent from '../components/FirstComponent';
 import SecondComponent from '../components/SecondComponent';
 import { Button } from '@mui/material';
 import { useHistory } from 'react-router-dom';
 
 const SecondPage = () => {
+  const userDetails = JSON.parse(localStorage.getItem('userDetails') || '{}');
+  const [show, setShow] = React.useState(false);
   const history = useHistory();
 
   const data = [
@@ -18,9 +20,17 @@ const SecondPage = () => {
     },
   ];
 
+  useEffect(() => {
+    if (!userDetails.userName || !userDetails.email || !userDetails.number)
+      history.push('/');
+    else setShow(true);
+  }, []);
+
   const NavigateHome = () => {
     history.push('/');
   };
+
+  if (!show) return null;
 
   return (
     <div

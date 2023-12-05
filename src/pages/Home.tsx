@@ -91,7 +91,7 @@ const Home: React.FC = () => {
         flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'center',
-        height: '100vh',
+        height: '90vh',
       }}
     >
       <h1>Enter your details</h1>
