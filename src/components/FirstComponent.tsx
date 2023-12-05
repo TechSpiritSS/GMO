@@ -1,10 +1,7 @@
-
-// DataGridExample.tsx
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { DataGrid, GridColDef } from '@mui/x-data-grid';
 
-// Define a TypeScript interface for the data
 interface Post {
   userId: number;
   id: number;
@@ -19,7 +16,9 @@ const FirstComponent: React.FC = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('https://jsonplaceholder.typicode.com/posts');
+        const response = await axios.get(
+          'https://jsonplaceholder.typicode.com/posts'
+        );
         setData(response.data);
       } catch (error) {
         console.error('Error fetching data:', error);
@@ -39,8 +38,7 @@ const FirstComponent: React.FC = () => {
 
   return (
     <div style={{ height: 400, width: '100%' }}>
-      <DataGrid rows={data} columns={columns} 
-      checkboxSelection />
+      <DataGrid rows={data} columns={columns} checkboxSelection />
     </div>
   );
 };
